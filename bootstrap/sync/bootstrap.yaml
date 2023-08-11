@@ -11,7 +11,7 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: https://kubernetes.default.svc
+    name: in-cluster
   project: application-sync
   source:
     path: bootstrap/sync/
