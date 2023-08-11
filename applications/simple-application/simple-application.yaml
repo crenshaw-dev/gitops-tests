@@ -12,6 +12,7 @@ spec:
     - clusters:
         selector:
           matchExpressions:
+            - { key: environment, operator: Exists } # Filter in-cluster since it is defined as a secret.
             - key: environment
               operator: NotIn
               values: [prod]
