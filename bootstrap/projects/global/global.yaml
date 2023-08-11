@@ -9,5 +9,8 @@ spec:
   namespaceResourceBlacklist:
     - group: argoproj.io
       kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
   sourceRepos:
     - 'https://github.com/agaudreault-jive/gitops-tests'
