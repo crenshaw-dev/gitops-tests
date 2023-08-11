@@ -15,5 +15,5 @@ spec:
       name: 'staging'
     - namespace: 'production-1'
       name: 'production-1'
-    - namespace: 'production2'
-      name: 'production2'
+    - namespace: 'production-2'
+      name: 'production-2'
