@@ -1,0 +1,8 @@
+apiVersion: v2
+name: simple-application
+version: 1.0.0
+dependencies:
+  - name: wordpress
+    version: 17.0.5
+    repository: oci://registry-1.docker.io/bitnamicharts
+    alias: app

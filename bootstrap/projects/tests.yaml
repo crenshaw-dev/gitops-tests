@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: tests
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/project-inherit: global
+spec:
+  description: Project for the test services
+  destinations:
+    - namespace: 'tests'
+      server: '*'

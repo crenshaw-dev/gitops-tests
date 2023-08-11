@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tests.simple-application
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+  generators:
+    - clusters:
+        selector:
+          matchExpressions:
+            - key: environment
+              operator: NotIn
+              values: [prod]
+        values:
+          revision: dev
+    - clusters:
+        selector:
+          matchExpressions:
+            - key: environment
+              operator: In
+              values: [prod]
+        values:
+          revision: main
+  template:
+    metadata:
+      name: 'tests.simple-application.{{name}}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .;../values.yaml;
+    spec:
+      destination:
+        namespace: tests
+        name: '{{name}}'
+      project: tests
+      source:
+        path: services/simple-application/{{metadata.labels.environment}}
+        repoURL: https://github.com/agaudreault-jive/gitops-tests
+        targetRevision: '{{values.revision}}'
+        helm:
+          releaseName: simple-application
+          ignoreMissingValueFiles: true
+          valueFiles:
+            - '../values.yaml'
+            - 'values.yaml'
+            - 'values-{{name}}.yaml'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - FailOnSharedResource=true
+          - ApplyOutOfSyncOnly=false
+          - RespectIgnoreDifferences=true

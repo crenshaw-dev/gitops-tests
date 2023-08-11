@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  namespaceResourceWhitelist:
+    - group: 'argoproj.io'
+      kind: 'AppProject'
+  destinations:
+    - namespace: 'argocd'
+      name: 'in-cluster'
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - 'https://github.com/agaudreault-jive/gitops-tests'
