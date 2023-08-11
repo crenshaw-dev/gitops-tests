@@ -32,7 +32,7 @@ spec:
         argocd.argoproj.io/manifest-generate-paths: .;../values.yaml;
     spec:
       destination:
-        namespace: tests
+        namespace: '{{metadata.labels.fake-ns}}'
         name: '{{name}}'
       project: tests
       source:

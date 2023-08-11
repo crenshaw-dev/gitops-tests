@@ -22,3 +22,7 @@
 
 # Comon template
 rendered_manifest.yaml
+
+# Folder that contains patch to non-gitops application to help with test can configuration
+/overrides/**
+!/overrides/README.md
