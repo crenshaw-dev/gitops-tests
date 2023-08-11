@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  application.resourceTrackingMethod: annotation+label
+  help.chatText: 'Hello!'
+  resource.ignoreResourceUpdatesEnabled: 'true'
+  resource.compareoptions: |
+    ignoreResourceStatusField: all
+    ignoreAggregatedRoles: true
+  resource.customizations.ignoreResourceUpdates.all: |
+    jsonPointers:
+      - /status
+  resource.customizations.ignoreResourceUpdates.autoscaling_HorizontalPodAutoscaler:
+    |
+    jsonPointers:
+      - /metadata/annotations/autoscaling.alpha.kubernetes.io~1behavior
+      - /metadata/annotations/autoscaling.alpha.kubernetes.io~1conditions
+      - /metadata/annotations/autoscaling.alpha.kubernetes.io~1metrics
+      - /metadata/annotations/autoscaling.alpha.kubernetes.io~1current-metrics
+  resource.customizations.ignoreResourceUpdates.apps_ReplicaSet: |
+    jsonPointers:
+      - /metadata/annotations/deployment.kubernetes.io~desired-replicas
+      - /metadata/annotations/deployment.kubernetes.io~max-replicas
+      - /metadata/annotations/deployment.kubernetes.io~revision
+  resource.customizations.ignoreResourceUpdates.storage.k8s.io_CSIStorageCapacity:
+    |
+    jsonPointers:
+      - /capacity
+  globalProjects: |-
+    - labelSelector:
+        matchExpressions:
+          - key: argocd.argoproj.io/project-inherit
+            operator: In
+            values:
+              - global
+      projectName: global
