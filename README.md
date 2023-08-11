@@ -20,9 +20,9 @@ kubectl apply -n argocd -k ./services/argo-cd
 
 ## Bootstrap
 
-At first, the [sync-projects](./sync/sync-projects.yaml) application must be applied manually.
+At first, the [sync-projects](./bootstrap/sync/sync-projects.yaml) application must be applied manually.
 
-Then, the [bootstrap](./sync/bootstrap.yaml) can be applied manually.
+Then, the [bootstrap](./bootstrap/sync/bootstrap.yaml) can be applied manually.
 
 ```bash
 kubectl apply -n argocd -f bootstrap/sync/sync-projects.yaml
