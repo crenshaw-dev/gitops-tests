@@ -29,3 +29,4 @@ metadata:
 spec:
   type: ExternalName
   externalName: kubernetes.default.svc.cluster.local
+
