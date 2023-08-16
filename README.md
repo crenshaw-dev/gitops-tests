@@ -2,36 +2,60 @@
 
 ## Prerequisite
 
-This setup assumes you have a local cluster rready to be used.
+This setup assumes you have a local kind cluster ready to be used with the configuration below for the Kubernetes API endpoint.
+
+```yaml
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://host.docker.internal:49999
+  name: kind-argo-local
+```
 
 ## Deployment
 
 To deploy ArgoCD with this test setup, you need to configure the correct clusters.
 We try to simultate multiple clusters using different namespaces and cluster names, all present on the `in-cluster`.
 
+For the config to work both locally when debugging ArgoCD and in our remote kind cluster (on MacOS),
+we use `host.docker.internal` as the Kubernetes Service external name. You will need to update your local `/etc/hosts` file to add
+the following:
+
+```
+127.0.0.1 host.docker.internal
+127.0.0.1 staging.argocd.svc
+127.0.0.1 dev.argocd.svc
+127.0.0.1 production-1.argocd.svc
+127.0.0.1 production-2.argocd.svc
+```
+
+Once configured, you can update the cluster configuration:
+
 1. Create the argocd-manager ServiceAccount to allow ArgoCD to manage the fake clusters:
-```bash
-kubectl apply -n kube-system -f bootstrap/serviceaccounts/argocd-manager.yaml
-```
-2. Get the token that was created for the ServiceAccount:
-```bash
-kubectl get -n kube-system secret argocd-manager-token -o jsonpath='{.data.token}' | base64 --decode
-```
 
-3. Make a copy of `example.yaml` at `./services/argo-cd/base/clusters` and rename it to `private.yaml`. 
+   ```bash
+   kubectl apply -n kube-system -f bootstrap/serviceaccounts/argocd-manager.yaml
+   ```
 
-4. Update the cluster configuration file `private.yaml`:
+1. Get the token that was created for the ServiceAccount:
+
+   ```bash
+   kubectl get -n kube-system secret argocd-manager-token -o jsonpath='{.data.token}' | base64 --decode
+   ```
+
+1. Make a copy of `example.yaml` at `./services/argo-cd/base/clusters` and rename it to `private.yaml`.
+
+1. Update the cluster configuration file `private.yaml`:
    - Replace `<TOKEN>` with the result of step 2
    - Replace `<CERT_DATA>` with the certData in your `~/.kube/config`
    - Replace `<KEY_DATA>` with the keyData in your `~/.kube/config`
    - Replace `<API_SERVER_PORT>` with the port used to reach the API server locally.
      - Can be found in your `~/.kube/config`
 
-5. Deploy argocd to your local cluster:
+1. Deploy argocd to your local cluster:
 
-```bash
-kubectl apply -n argocd -k ./services/argo-cd
-```
+   ```bash
+   kubectl apply -n argocd -k ./services/argo-cd
+   ```
 
 ## Bootstrap
 
