@@ -30,7 +30,7 @@ metadata:
 type: Opaque
 stringData:
   name: dev
-  server: https://dev.argocd.svc
+  server: https://dev.argocd.svc:49999
   namespaces: dev
   config: |
     {
@@ -53,7 +53,7 @@ metadata:
 type: Opaque
 stringData:
   name: staging
-  server: https://staging.argocd.svc
+  server: https://staging.argocd.svc:49999
   namespaces: staging
   config: |
     {
@@ -76,7 +76,7 @@ metadata:
 type: Opaque
 stringData:
   name: production-1
-  server: https://production-1.argocd.svc
+  server: https://production-1.argocd.svc:49999
   namespaces: production-1
   config: |
     {
@@ -100,7 +100,7 @@ metadata:
 type: Opaque
 stringData:
   name: production-2
-  server: https://production-2.argocd.svc
+  server: https://production-2.argocd.svc:49999
   namespaces: production-2
   config: |
     {

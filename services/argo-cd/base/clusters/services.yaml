@@ -4,7 +4,7 @@ metadata:
   name: dev
 spec:
   type: ExternalName
-  externalName: kubernetes.default.svc.cluster.local
+  externalName: host.docker.internal
 ---
 apiVersion: v1
 kind: Service
@@ -12,7 +12,7 @@ metadata:
   name: staging
 spec:
   type: ExternalName
-  externalName: kubernetes.default.svc.cluster.local
+  externalName: host.docker.internal
 ---
 apiVersion: v1
 kind: Service
@@ -20,7 +20,7 @@ metadata:
   name: production-1
 spec:
   type: ExternalName
-  externalName: kubernetes.default.svc.cluster.local
+  externalName: host.docker.internal
 ---
 apiVersion: v1
 kind: Service
@@ -28,4 +28,4 @@ metadata:
   name: production-2
 spec:
   type: ExternalName
-  externalName: kubernetes.default.svc.cluster.local
+  externalName: host.docker.internal
