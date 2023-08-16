@@ -24,6 +24,8 @@ kubectl get -n kube-system secret argocd-manager-token -o jsonpath='{.data.token
    - Replace `<TOKEN>` with the result of step 2
    - Replace `<CERT_DATA>` with the certData in your `~/.kube/config`
    - Replace `<KEY_DATA>` with the keyData in your `~/.kube/config`
+   - Replace `<API_SERVER_PORT>` with the port used to reach the API server locally.
+     - Can be found in your `~/.kube/config`
 
 5. Deploy argocd to your local cluster:
 
