@@ -7,7 +7,7 @@ This setup assumes you have a local kind cluster ready to be used with the confi
 ```yaml
 - cluster:
     insecure-skip-tls-verify: true
-    server: https://host.docker.internal:49999
+    server: https://host.docker.internal:<API_SERVER_PORT>
   name: kind-argo-local
 ```
 
@@ -48,6 +48,8 @@ Once configured, you can update the cluster configuration:
    - Replace `<TOKEN>` with the result of step 2
    - Replace `<CERT_DATA>` with the certData in your `~/.kube/config`
    - Replace `<KEY_DATA>` with the keyData in your `~/.kube/config`
+   - Replace `<API_SERVER_PORT>` with the port used to reach the API server locally.
+     - Can be found in your `~/.kube/config`
 
 1. Deploy argocd to your local cluster:
 

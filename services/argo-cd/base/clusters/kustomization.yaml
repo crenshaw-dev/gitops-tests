@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./private.yaml
   - ./services.yaml
+
