@@ -13,4 +13,4 @@ spec:
     - namespace: 'argocd'
       name: 'in-cluster'
   sourceRepos:
-    - 'https://github.com/agaudreault-jive/gitops-tests'
+    - 'https://github.com/agaudreault/gitops-tests'

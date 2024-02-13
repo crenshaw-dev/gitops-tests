@@ -38,7 +38,7 @@ spec:
       project: tests
       source:
         path: services/simple-application/{{metadata.labels.environment}}
-        repoURL: https://github.com/agaudreault-jive/gitops-tests
+        repoURL: https://github.com/agaudreault/gitops-tests
         targetRevision: '{{values.revision}}'
         helm:
           releaseName: simple-application

@@ -15,7 +15,7 @@ spec:
   project: setup
   source:
     path: bootstrap/manifests/
-    repoURL: https://github.com/agaudreault-jive/gitops-tests
+    repoURL: https://github.com/agaudreault/gitops-tests
     targetRevision: main
     directory:
       recurse: true

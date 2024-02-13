@@ -17,7 +17,7 @@ spec:
   project: default
   source:
     path: bootstrap/projects/
-    repoURL: https://github.com/agaudreault-jive/gitops-tests
+    repoURL: https://github.com/agaudreault/gitops-tests
     targetRevision: main
     directory:
       recurse: true
