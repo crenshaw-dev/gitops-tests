@@ -4,6 +4,7 @@ metadata:
   name: cluster-in-cluster-secret
   labels:
     argocd.argoproj.io/secret-type: cluster
+    name: in-cluster
 type: Opaque
 stringData:
   name: in-cluster
@@ -25,6 +26,7 @@ metadata:
   name: cluster-dev-secret
   labels:
     argocd.argoproj.io/secret-type: cluster
+    name: dev
     environment: dev
     fake-ns: dev
 type: Opaque
@@ -48,6 +50,7 @@ metadata:
   name: cluster-staging-secret
   labels:
     argocd.argoproj.io/secret-type: cluster
+    name: staging
     environment: staging
     fake-ns: staging
 type: Opaque
@@ -71,6 +74,7 @@ metadata:
   name: cluster-prod-1-secret
   labels:
     argocd.argoproj.io/secret-type: cluster
+    name: production-1
     environment: prod
     fake-ns: production-1
 type: Opaque
@@ -95,6 +99,7 @@ metadata:
   name: cluster-prod-2-secret
   labels:
     argocd.argoproj.io/secret-type: cluster
+    name: production-2
     environment: prod
     fake-ns: production-2
 type: Opaque
