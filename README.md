@@ -39,7 +39,7 @@ Once configured, you can update the cluster configuration:
 1. Get the token that was created for the ServiceAccount:
 
    ```bash
-   kubectl get -n kube-system secret argocd-manager-token -o jsonpath='{.data.token}' | base64 --decode
+   kubectl get -n kube-system secret argocd-manager-token -o jsonpath='{.data.token}' | base64 --decode; echo
    ```
 
 1. Make a copy of `example.yaml` at `./services/argo-cd/base/clusters` and rename it to `private.yaml`.
