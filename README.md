@@ -54,6 +54,7 @@ Once configured, you can update the cluster configuration:
 1. Deploy argocd to your local cluster:
 
    ```bash
+   kubectl apply -n argocd -f ./services/argo-cd/base/clusters/private.yaml
    kubectl apply -n argocd -k ./services/argo-cd
    ```
 

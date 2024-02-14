@@ -2,6 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ./private.yaml
+  # - ./private.yaml ### Uncomment if the application is not managed by argo
   - ./services.yaml
-
