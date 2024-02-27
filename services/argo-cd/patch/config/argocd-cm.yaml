@@ -39,3 +39,10 @@ data:
             values:
               - global
       projectName: global
+    - labelSelector:
+        matchExpressions:
+          - key: argocd.argoproj.io/project-type
+            operator: In
+            values:
+              - controller
+      projectName: type-controller

@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: type-controller
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  description: Global configuration for all projects deploying controllers requiring cluster-scoped permissions
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - 'https://github.com/agaudreault/gitops-tests'

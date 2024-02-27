@@ -22,3 +22,6 @@
 
 # Comon template
 rendered_manifest.yaml
+
+# Ignore local app manifest
+/applications/local

@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: controller
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/project-inherit: global
+    argocd.argoproj.io/project-type: controller
+spec:
+  description: Projects for common local controllers
+  destinations:
+    - namespace: "*"
+      name: "in-cluster"
