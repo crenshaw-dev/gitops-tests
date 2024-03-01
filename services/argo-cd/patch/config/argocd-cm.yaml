@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
+  admin.enabled: 'false'
+  users.anonymous.enabled: 'true'
   application.resourceTrackingMethod: annotation+label
   help.chatText: 'Hello!'
   resource.ignoreResourceUpdatesEnabled: 'true'
