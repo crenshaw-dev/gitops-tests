@@ -17,3 +17,5 @@ spec:
       name: 'production-1'
     - namespace: 'production-2'
       name: 'production-2'
+  sourceRepos:
+    - 'https://helm.github.io/examples'
