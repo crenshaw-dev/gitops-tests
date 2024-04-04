@@ -1,4 +1,4 @@
 app:
   service:
     type: ClusterIP
-replicaCount: 3
+replicaCount: 2
